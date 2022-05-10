@@ -66,7 +66,7 @@ def test(net, criterion, batch_size):
     correct_com = 0
     total = 0
     idx = 0
-    device = torch.device("cuda:0,1")
+    device = torch.device("cuda:0") # modify
 
     transform_test = transforms.Compose([
         transforms.Scale((550, 550)),
