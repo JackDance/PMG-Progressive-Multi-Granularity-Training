@@ -39,7 +39,7 @@ def train(nb_epoch, batch_size, store_name, resume=False, start_epoch=0, model_p
         net = torch.load(model_path)
     else:
         net = load_model(model_name='resnet50_pmg', pretrain=True, require_grad=True)
-    netp = torch.nn.DataParallel(net, device_ids=[0,1])
+    netp = torch.nn.DataParallel(net, device_ids=[0]) # 这里只有一个gpu，故设为0.原先为[0,1]
 
     # GPU
     device = torch.device("cuda:0,1")
