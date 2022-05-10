@@ -42,7 +42,7 @@ def train(nb_epoch, batch_size, store_name, resume=False, start_epoch=0, model_p
     netp = torch.nn.DataParallel(net, device_ids=[0]) # 这里只有一个gpu，故设为0.原先为[0,1]
 
     # GPU
-    device = torch.device("cuda:0,1")
+    device = torch.device("cuda:0") # 这里只有一个gpu，故设为0.原先为cuda:0,1
     net.to(device)
     # cudnn.benchmark = True
 
