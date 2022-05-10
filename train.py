@@ -159,7 +159,7 @@ def train(nb_epoch, batch_size, store_name, resume=False, start_epoch=0, model_p
 
 
 train(nb_epoch=200,             # number of epoch
-         batch_size=16,         # batch size
+         batch_size=20,         # batch size
          store_name='bird',     # folder for output
          resume=False,          # resume training from checkpoint
          start_epoch=0,         # the start epoch number when you resume the training
