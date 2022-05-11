@@ -142,7 +142,7 @@ def train(nb_epoch, batch_size, store_name, resume=False, start_epoch=0, model_p
                 epoch, train_acc, train_loss, train_loss1 / (idx + 1), train_loss2 / (idx + 1), train_loss3 / (idx + 1),
                 train_loss4 / (idx + 1)))
 
-        if epoch < 5 or epoch >= 180:
+        if epoch < 5 or epoch >= 80:
             val_acc, val_acc_com, val_loss = test(net, CELoss, 3)
             if val_acc_com > max_val_acc:
                 max_val_acc = val_acc_com
