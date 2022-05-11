@@ -23,7 +23,7 @@ def load_model(model_name, pretrain=True, require_grad=True):
         net = resnet50(pretrained=pretrain)
         for param in net.parameters():
             param.requires_grad = require_grad
-        net = PMG(net, 512, 196) # modify
+        net = PMG(net, 512, 196) # modify, 200 for bird, 196 for stanford car, 100 for aircraft.
 
     return net
 
