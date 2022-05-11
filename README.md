@@ -14,6 +14,8 @@ torchvision >= 0.4.2
 ### Training
 
 1. Download datatsets for FGVC (e.g. CUB-200-2011, Standford Cars, FGVC-Aircraft, etc) and organize the structure as follows:
+   
+(the processed CUB-200-2011, Standford Cars, FGVC-Aircraft can be downloaded in https://its304.com/article/weixin_43667077/116298005)
 ```
 dataset
 ├── train
