@@ -31,8 +31,8 @@ def train(nb_epoch, batch_size, store_name, resume=False, start_epoch=0, model_p
         transforms.ToTensor(),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
     ])
-    trainset = torchvision.datasets.ImageFolder(root='./dataset/bird/train', transform=transform_train)
-    trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True, num_workers=4)
+    trainset = torchvision.datasets.ImageFolder(root='./dataset/Stanford_Cars/train', transform=transform_train)
+    trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True, num_workers=8)
 
     # Model
     if resume:
@@ -142,7 +142,7 @@ def train(nb_epoch, batch_size, store_name, resume=False, start_epoch=0, model_p
                 epoch, train_acc, train_loss, train_loss1 / (idx + 1), train_loss2 / (idx + 1), train_loss3 / (idx + 1),
                 train_loss4 / (idx + 1)))
 
-        if epoch < 5 or epoch >= 80:
+        if epoch < 5 or epoch >= 180:
             val_acc, val_acc_com, val_loss = test(net, CELoss, 3)
             if val_acc_com > max_val_acc:
                 max_val_acc = val_acc_com
@@ -160,7 +160,7 @@ def train(nb_epoch, batch_size, store_name, resume=False, start_epoch=0, model_p
 
 train(nb_epoch=200,             # number of epoch
          batch_size=23,         # batch size
-         store_name='bird',     # folder for output
+         store_name='standford_cars',     # folder for output
          resume=False,          # resume training from checkpoint
          start_epoch=0,         # the start epoch number when you resume the training
          model_path='')         # the saved model where you want to resume the training

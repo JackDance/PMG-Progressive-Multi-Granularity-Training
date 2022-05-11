@@ -7,8 +7,6 @@
    date:          2022/5/10
 -------------------------------------------------
 """
-# *_*coding: utf-8 *_*
-# author --liming--
 
 """
 用于已下载数据集的转换,便于pytorch的读取
@@ -18,6 +16,7 @@ import torch
 import torchvision
 import config
 from torchvision import datasets, transforms
+import os
 
 data_transform = transforms.Compose([
     transforms.Resize(224),
@@ -26,15 +25,16 @@ data_transform = transforms.Compose([
 ])
 
 
-def train_data_load():
+def train_data_load(root):
     # 训练集
-    root_train = config.ROOT_TRAIN
+    root_train = os.path.join(root, 'train/')
     train_dataset = torchvision.datasets.ImageFolder(root_train,
                                                      transform=data_transform)
     CLASS = train_dataset.class_to_idx
+    IMGS = train_dataset.imgs
     print('训练数据label与文件名的关系:', CLASS)
     train_loader = torch.utils.data.DataLoader(train_dataset,
-                                               batch_size=config.BATCH_SIZE,
+                                               batch_size=16,
                                                shuffle=True)
     return CLASS, train_loader
 
@@ -53,6 +53,7 @@ def test_data_load():
     return CLASS, test_loader
 
 
-if __name__ == '__main___':
-    train_data_load()
-    test_data_load()
+if __name__ == '__main__':
+    path = r'/Users/jack/Downloads/细粒度分类/bird/'
+    train_data_load(path)
+    # test_data_load()
