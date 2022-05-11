@@ -23,7 +23,7 @@ def load_model(model_name, pretrain=True, require_grad=True):
         net = resnet50(pretrained=pretrain)
         for param in net.parameters():
             param.requires_grad = require_grad
-        net = PMG(net, 512, 200)
+        net = PMG(net, 512, 196) # modify
 
     return net
 
@@ -74,9 +74,9 @@ def test(net, criterion, batch_size):
         transforms.ToTensor(),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
     ])
-    testset = torchvision.datasets.ImageFolder(root='./dataset/Stanford_Cars/test',
+    testset = torchvision.datasets.ImageFolder(root='./dataset/Stanford_Cars/test', # modify
                                                transform=transform_test)
-    testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle=True, num_workers=4)
+    testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle=True, num_workers=8)
 
     for batch_idx, (inputs, targets) in enumerate(testloader):
         idx = batch_idx
