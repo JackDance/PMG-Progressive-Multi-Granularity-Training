@@ -23,7 +23,7 @@ def load_model(model_name, pretrain=True, require_grad=True):
         net = resnet50(pretrained=pretrain)
         for param in net.parameters():
             param.requires_grad = require_grad
-        net = PMG(net, 512, 100) # modify, 200 for bird, 196 for stanford car, 100 for aircraft.
+        net = PMG(net, 512, 200) # modify, 200 for bird, 196 for stanford car, 100 for aircraft.
 
     return net
 
@@ -74,7 +74,7 @@ def test(net, criterion, batch_size):
         transforms.ToTensor(),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
     ])
-    testset = torchvision.datasets.ImageFolder(root='./dataset/FGVC_Aircraft/test', # modify
+    testset = torchvision.datasets.ImageFolder(root='./dataset/bird/test', # modify
                                                transform=transform_test)
     testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size, shuffle=True, num_workers=8)
 

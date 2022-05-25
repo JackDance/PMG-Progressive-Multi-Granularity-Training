@@ -31,7 +31,7 @@ def train(nb_epoch, batch_size, store_name, resume=False, start_epoch=0, model_p
         transforms.ToTensor(),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
     ])
-    trainset = torchvision.datasets.ImageFolder(root='./dataset/FGVC_Aircraft/train', transform=transform_train) # modify
+    trainset = torchvision.datasets.ImageFolder(root='./dataset/bird/train', transform=transform_train) # modify
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True, num_workers=8)
 
     # Model
@@ -160,7 +160,7 @@ def train(nb_epoch, batch_size, store_name, resume=False, start_epoch=0, model_p
 
 train(nb_epoch=200,             # number of epoch
          batch_size=23,         # batch size
-         store_name='FGVC_Aircraft',     # folder for output, modify
+         store_name='bird',     # folder for output, modify
          resume=False,          # resume training from checkpoint
          start_epoch=0,         # the start epoch number when you resume the training
          model_path='')         # the saved model where you want to resume the training
